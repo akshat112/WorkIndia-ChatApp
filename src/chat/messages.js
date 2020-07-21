@@ -16,6 +16,13 @@ class Messages extends React.Component {
     var objDiv = document.getElementById("conversation");
     objDiv.scrollTop = objDiv.scrollHeight;
   }
+
+  componentDidUpdate() {
+    if (this.state.details.name != this.props.details.name) {
+      this.setState({ details: this.props.details });
+    }
+  }
+
   render() {
     return (
       <div className="chatWindow">

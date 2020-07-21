@@ -8,8 +8,10 @@ import {
   Input,
 } from "reactstrap";
 import "./chat.css";
-import { Search } from "react-feather";
+import { Search, Phone } from "react-feather";
 import LazyLoad from "react-lazyload";
+import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
+import "react-tabs/style/react-tabs.css";
 
 import User1 from "./user1.webp";
 import User2 from "./user2.webp";
@@ -460,12 +462,87 @@ class Chat extends React.Component {
     },
   ];
 
+  callList = [
+    {
+      id: 1,
+      name: "User 1",
+      lastCallTime: "4:30PM",
+      image: User1,
+    },
+    {
+      id: 2,
+      name: "A test user 2",
+      lastCallTime: "4:30PM",
+      image: User4,
+    },
+    {
+      id: 3,
+      name: "A test user 3",
+      lastCallTime: "4:30PM",
+      image: User2,
+    },
+    {
+      id: 4,
+      name: "A test user 4",
+      lastCallTime: "4:30PM",
+      image: User2,
+    },
+    {
+      id: 5,
+      name: "A test user 5",
+      lastCallTime: "4:30PM",
+      image: User3,
+    },
+    {
+      id: 6,
+      name: "A test user 6",
+      lastCallTime: "4:30PM",
+      image: User4,
+    },
+    {
+      id: 7,
+      name: "A test user 7",
+      lastCallTime: "4:30PM",
+      image: User5,
+    },
+    {
+      id: 8,
+      name: "A test user 8",
+      lastCallTime: "4:30PM",
+      image: User1,
+    },
+    {
+      id: 9,
+      name: "A test user 9",
+      lastCallTime: "4:30PM",
+      image: User2,
+    },
+    {
+      id: 10,
+      name: "A test user 10",
+      lastCallTime: "4:30PM",
+      image: User3,
+    },
+    {
+      id: 11,
+      name: "A test user 11",
+      lastCallTime: "4:30PM",
+      image: User4,
+    },
+    {
+      id: 12,
+      name: "A test user 12",
+      lastCallTime: "4:30PM",
+      image: User5,
+    },
+  ];
+
   updateSearch(event) {
     this.setState({ search: event.target.value });
   }
 
   openChat(key, e) {
-    console.log(e);
+    console.log(key);
     this.setState({ user: this.userList[key - 1], active: key });
     delete this.userList[key - 1].unread;
   }
@@ -476,6 +553,12 @@ class Chat extends React.Component {
 
   render() {
     let filtered = this.userList.filter((contact) => {
+      return (
+        contact.name.toLowerCase().indexOf(this.state.search.toLowerCase()) !==
+        -1
+      );
+    });
+    let filteredCalls = this.callList.filter((contact) => {
       return (
         contact.name.toLowerCase().indexOf(this.state.search.toLowerCase()) !==
         -1
@@ -501,36 +584,63 @@ class Chat extends React.Component {
               </InputGroup>
             </div>
             <div className="contactsList">
-              {filtered.map((user) => {
-                return (
-                  <LazyLoad height={0} offset={0}>
-                    <Row
-                      className="contact"
-                      key={user.id}
-                      onClick={(e) => this.openChat(user.id, e)}
-                    >
-                      <Col lg="2" className="image">
-                        <img src={user.image} />
-                      </Col>
-                      <Col lg="7">
-                        <span className="name">{user.name}</span> <br />
-                        <span className="lastMsg">
-                          {user.chats[user.chats.length - 1].message.substr(
-                            0,
-                            25
-                          ) + "..."}
-                        </span>
-                      </Col>
-                      <Col lg="3" className="text-center">
-                        <span class="time">12:01 AM</span> <br />
-                        {user.unread ? (
-                          <span class="unread">{user.unread}</span>
-                        ) : null}
-                      </Col>
-                    </Row>
-                  </LazyLoad>
-                );
-              })}
+              <Tabs>
+                <TabList>
+                  <Tab>Chat</Tab>
+                  <Tab>Calls</Tab>
+                </TabList>
+
+                <TabPanel>
+                  {filtered.map((user) => {
+                    return (
+                      <LazyLoad height={0} offset={0}>
+                        <Row
+                          className="contact"
+                          key={user.id}
+                          onClick={(e) => this.openChat(user.id, e)}
+                        >
+                          <Col lg="2" className="image">
+                            <img src={user.image} />
+                          </Col>
+                          <Col lg="7">
+                            <span className="name">{user.name}</span> <br />
+                            <span className="lastMsg">
+                              {user.chats[user.chats.length - 1].message.substr(
+                                0,
+                                25
+                              ) + "..."}
+                            </span>
+                          </Col>
+                          <Col lg="3" className="text-center">
+                            <span className="time">12:01 AM</span> <br />
+                            {user.unread ? (
+                              <span className="unread">{user.unread}</span>
+                            ) : null}
+                          </Col>
+                        </Row>{" "}
+                      </LazyLoad>
+                    );
+                  })}
+                </TabPanel>
+                <TabPanel>
+                  {filteredCalls.map((user) => {
+                    return (
+                      <Row className="contact" key={user.id}>
+                        <Col lg="2" className="image">
+                          <img src={user.image} />
+                        </Col>
+                        <Col lg="7">
+                          <span className="name">{user.name}</span> <br />
+                          <span className="lastMsg">{user.lastCallTime}</span>
+                        </Col>
+                        <Col lg="3" className="text-center">
+                          <Phone></Phone>
+                        </Col>
+                      </Row>
+                    );
+                  })}
+                </TabPanel>
+              </Tabs>
             </div>
           </Col>
           <Col md="8" id="messages">
