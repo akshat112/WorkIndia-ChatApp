@@ -1,0 +1,62 @@
+#search {
+  padding: 10px;
+  /* background-color: lightcoral; */
+  border-bottom: 1px solid lightgray;
+}
+#search input {
+  /* border-radius: 10px; */
+  /* border: 1px solid lightgray; */
+  /* width: 90%; */
+  padding: 7px;
+}
+#contacts {
+  border-right: 1px solid lightgray;
+  padding-right: 0;
+  height: 90vh;
+}
+.contact {
+  border-bottom: 1px solid lightgray;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  cursor: pointer;
+}
+.contact:hover {
+  background-color: lightgray;
+}
+.contact .name {
+  font-weight: bold;
+}
+.contactsList {
+  overflow-y: scroll;
+  height: 80vh;
+}
+
+.image img {
+  width: 50px;
+  height: 50px;
+  padding: 5px;
+  border-radius: 50%;
+}
+.lastMsg {
+  font-size: 15px;
+  font-weight: 200;
+}
+#messages {
+  padding-left: 0;
+}
+.time {
+  font-size: 12px;
+}
+
+.unread {
+  display: inline-block;
+  height: 22px;
+  width: 22px;
+  background: linear-gradient(118deg, #7367f0, rgba(115, 103, 240, 0.7));
+  border-radius: 50%;
+  font-size: 14px;
+  color: white;
+  font-weight: 500;
+}

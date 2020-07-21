@@ -1,0 +1,85 @@
+img {
+  width: 50px;
+  height: 50px;
+  padding: 5px;
+  border-radius: 50%;
+}
+#header {
+  background-color: #f3f3f3;
+  border-bottom: 1px solid lightgray;
+  padding-top: 8px;
+}
+
+.box3 {
+  /* min-width: 70px;
+  max-width: 200px; */
+  width: fit-content;
+  margin: 10px 20px;
+  border-radius: 15px;
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+  font-family: arial;
+  position: relative;
+}
+
+/* speech bubble 13 */
+.sb13 {
+  right: -77%;
+  text-align: right;
+  padding-right: 20px;
+  padding-left: 20px;
+  background: linear-gradient(118deg, #7367f0, rgba(115, 103, 240, 0.7));
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.12), 0 2px 4px 0 rgba(0, 0, 0, 0.08);
+}
+.sb14 {
+  text-align: left;
+  padding-left: 20px;
+  padding-right: 20px;
+  background-color: #fff;
+  color: black;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.12), 0 2px 4px 0 rgba(0, 0, 0, 0.08);
+}
+.sb13:before {
+  content: "";
+  width: 0px;
+  height: 0px;
+  position: absolute;
+  border-left: 15px solid #9086e5;
+  border-right: 15px solid transparent;
+  border-top: 15px solid #9086e5;
+  border-bottom: 15px solid transparent;
+  right: -16px;
+  top: 0px;
+}
+
+/* speech bubble 14 */
+
+.sb14:before {
+  content: "";
+  width: 0px;
+  height: 0px;
+  position: absolute;
+  border-left: 15px solid transparent;
+  border-right: 15px solid #fff;
+  border-top: 15px solid #fff;
+  border-bottom: 15px solid transparent;
+  left: -16px;
+  top: 0px;
+}
+
+#conversation {
+  overflow-y: scroll;
+  height: 72vh;
+  background-image: url("./chatbg.png");
+}
+
+.newMessage {
+  background-color: #f3f3f3;
+  padding: 9px;
+}
+
+Button {
+  background: linear-gradient(118deg, #7367f0, rgba(115, 103, 240, 0.7));
+  border: 0 !important;
+}
